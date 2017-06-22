@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
   onSearch(query: string = '') {
     this.offset = 0;
     this.currentQuery = query;
+    this.searchOrListReviews();
   }
 
   onNext() {
