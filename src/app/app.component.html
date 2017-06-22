@@ -1,0 +1,41 @@
+<div class="container-fluid mainDiv">
+
+  <div class="form-group">
+    <h1>Movie reviews</h1>
+  </div>
+
+  <div class="row searchbar">
+    <div class="input-group">
+      <input #search
+             (keyup.enter)="onSearch(search.value)"
+             class="form-control"
+             placeholder="Search review"
+             autofocus>
+      <span class="input-group-btn">
+        <button class="btn btn-primary"
+                (click)="onSearch(search.value)">Search</button> 
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group reviewList">
+    <div *ngFor="let review of listReviews">
+      <a [attr.href]="review.link.url"
+         target="_blank">
+      <span [attr.title]="review.summary_short">{{ review.display_title }}</span></a>
+    </div>
+  </div>
+
+  <div class="form-group navigation">
+    <button class="btn btn-default"
+            [disabled]="offset <= 0"
+            (click)="onPrevious()"><<</button>
+    <button class="btn btn-default"
+            [disabled]="!hasMore"
+            (click)="onNext()">>></button>
+  </div>
+
+  <a class="nytimesHref"
+     href="http://developer.nytimes.com/"
+     target="_blank"><img src="assets/poweredby_nytimes_150a.png"></a>
+</div>
